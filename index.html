@@ -26,7 +26,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: var(--font-sans); /* 內文預設無襯線，易讀 */
+            font-family: var(--font-sans);
             line-height: 1.6;
             overflow-x: hidden;
             border-left: 1px solid var(--line-color);
@@ -36,9 +36,14 @@
             position: relative;
         }
 
-        /* 圖片設定：懸停時從黑白變彩色 */
+        /* 圖片設定：預設全站圖片黑白，懸停時變彩色 */
         img { width: 100%; height: auto; display: block; transition: all 0.6s ease; filter: grayscale(100%) contrast(1.05); }
         .project-block:hover img { filter: grayscale(0%) contrast(1); }
+        
+        /* --- [新增] 強制讓個人頭像保持彩色 --- */
+        .profile-section img {
+            filter: grayscale(0%) contrast(1) !important;
+        }
         
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         
@@ -54,7 +59,7 @@
         }
         nav a:hover { color: var(--accent-color); }
 
-        /* 四角裁切線 (Crop Marks) */
+        /* 四角裁切線 */
         .crop-mark { position: fixed; width: 15px; height: 15px; border: 1px solid #000; z-index: 999; pointer-events: none; }
         .tl { top: 0; left: 0; border-right: none; border-bottom: none; }
         .tr { top: 0; right: 0; border-left: none; border-bottom: none; }
@@ -105,17 +110,16 @@
         .service-list li { margin-bottom: 0.5rem; list-style: none; }
         .service-list li::before { content: "→ "; color: var(--accent-color); }
 
-        /* --- 5. 作品展示區 (Archive Grid) --- */
+        /* --- 5. 作品展示區 --- */
         .project-block {
             display: grid;
-            grid-template-columns: 320px 1fr; /* 左側資訊欄固定，右側視覺自適應 */
+            grid-template-columns: 320px 1fr;
             border-bottom: 1px solid var(--line-color);
             min-height: 90vh;
             background: #fff;
         }
         .project-block:nth-child(even) { background: var(--bg-color); }
 
-        /* 左側資訊欄 */
         .p-sidebar { 
             padding: 3rem 2rem; 
             border-right: 1px solid var(--line-color); 
@@ -137,7 +141,6 @@
         .p-subtitle { font-family: var(--font-mono); font-size: 0.75rem; color: #888; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
         .p-text { font-size: 0.95rem; color: #444; text-align: justify; margin-bottom: 1.5rem; }
 
-        /* 右側視覺區 */
         .p-visuals {
             padding: 3rem;
             display: flex;
@@ -145,7 +148,6 @@
             gap: 3rem;
         }
 
-        /* 視覺模組：大圖 */
         .visual-hero img { box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .fig-caption {
             margin-top: 0.5rem;
@@ -154,7 +156,6 @@
             border-top: 1px solid #ddd; padding-top: 5px;
         }
 
-        /* 視覺模組：二欄細節 */
         .visual-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
         }
@@ -170,7 +171,6 @@
         .contact-email:hover { color: var(--accent-color); border-bottom-color: var(--accent-color); }
         .copyright { font-family: var(--font-mono); font-size: 0.7rem; color: #666; }
 
-        /* RWD */
         @media (max-width: 900px) {
             body { border: none; }
             .hero h1 { font-size: 3.5rem; }
@@ -194,18 +194,10 @@
     <nav>
         <div>BEN / GRAPHIC DESIGN</div>
         <div>
-            <a href="#projects">PROJECTS</a> / <a href="mailto:dadoo0130@gmail.com">CONTACT</a>
+            <a href="#projects">PROJECTS</a> / 
+            <a href="mailto:dadoo0130@gmail.com">CONTACT</a>
         </div>
     </nav>
-
-    <!-- <header class="hero">
-        <h1>VISUAL<br>COMMUNICATION<br>PORTFOLIO.</h1>
-        <div class="hero-meta">
-            <div>FREELANCE DESIGNER</div>
-            <div>BASED IN TAIWAN</div>
-            <div>BRANDING / EVENT / DIGITAL / PACKAGING</div>
-        </div>
-    </header> -->
 
     <div class="marquee-bar">
         <div class="marquee-content">
@@ -261,8 +253,6 @@
                     <img src="images/project1-main.png" alt="SIIR Main Visual">
                     <div class="fig-caption"><span>FIG. 01.1</span><span>論壇主視覺</span></div>
                 </div>
-
-               
                 <div class="visual-grid">
                     <div>
                         <img src="images/project1-1.jpg" alt="Stage Design">
@@ -284,12 +274,10 @@
                         <span class="p-type">EVENT VISUAL</span>
                     </div>
                     <h2 class="p-title">2023 JAKOTA<br>經濟趨勢論壇</h2>
-                    
                     <div class="p-context-box">
                         <div class="p-subtitle">CONTEXT</div>
                         <p class="p-text">探討日韓台(JAKOTA)在全球變局下的供應鏈合作。目標打造具備「國際感」、「科技感」的視覺形象，吸引高階經理人。</p>
                     </div>
-
                     <div class="p-context-box">
                         <div class="p-subtitle">CONCEPT</div>
                         <p class="p-text">概念：「數據匯流，驅動東亞經濟共同體」。以深藍色數位地球為基底，金色光束匯聚於東亞板塊，象徵資本與技術的流動。</p>
@@ -322,12 +310,10 @@
                         <span class="p-type">EVENT VISUAL</span>
                     </div>
                     <h2 class="p-title">2023 永續投資高峰會</h2>
-                    
                     <div class="p-context-box">
                         <div class="p-subtitle">CONTEXT</div>
                         <p class="p-text">商業周刊年度財經論壇，探討「綠色金融3.0」與ESG浪潮。需傳達「永續、金融、加速」三大核心。</p>
                     </div>
-
                     <div class="p-context-box">
                         <div class="p-subtitle">CONCEPT</div>
                         <p class="p-text">視覺核心結合「燈泡(創新)」、「綠芽」與「循環符號」。以漸層綠象徵生命力，科技藍代表金融專業。透過動態光束具象化「加速器」的動能。</p>
@@ -354,12 +340,10 @@
                         <span class="p-type">WEB DESIGN</span>
                     </div>
                     <h2 class="p-title">商周學院<br>網頁視覺改版</h2>
-                    
                     <div class="p-context-box">
                         <div class="p-subtitle">CONTEXT</div>
                         <p class="p-text">針對全台最有影響力的CEO共學平台進行官網改版。目標客群為金字塔頂端管理者，需打造RWD響應式且具權威感的頂級瀏覽體驗。</p>
                     </div>
-
                     <div class="p-context-box">
                         <div class="p-subtitle">CONCEPT</div>
                         <p class="p-text">以「尊爵黑」搭配「金屬髮絲紋」奠定權威感。運用品牌紅色的銳利箭頭造型，象徵「強者」前進的動能。高對比文字呼應「與強者為伍，與智者同行」的精神。</p>
@@ -375,7 +359,6 @@
                     <img src="images/project4-1.jpg" alt="Web Desktop Mockup">
                     <div class="fig-caption"><span>FIG. 04.2</span><span>網站內頁</span></div>
                 </div>
-                
             </div>
         </article>
 
@@ -387,12 +370,10 @@
                         <span class="p-type">DIGITAL MARKETING</span>
                     </div>
                     <h2 class="p-title">HAPPY GO<br>數位視覺設計</h2>
-                    
                     <div class="p-context-box">
                         <div class="p-subtitle">CONTEXT</div>
                         <p class="p-text">全台最大點數平台。挑戰在於在EDM、社群廣告、APP推播中，設計出能瞬間「喚醒」會員並驅動點擊的素材。</p>
                     </div>
-
                     <div class="p-context-box">
                         <div class="p-subtitle">STRATEGY</div>
                         <p class="p-text">設計調性講求「瞬間抓住目光」。針對「點數經濟」核心（如限時搶券、點數大富翁），使用高彩度配色與清晰重點文字，提升點擊率。</p>
@@ -425,16 +406,17 @@
                         <span class="p-type">PACKAGING</span>
                     </div>
                     <h2 class="p-title">食品包裝設計</h2>
-                    
                     <div class="p-context-box">
                         <div class="p-subtitle">CONTEXT</div>
-                        <p class="p-text">針對黑金剛花生、芝麻煎捲、梅精軟糖等產品進行包裝設計。目標是讓產品在貨架上「瞬間贏得選擇」。</p>
+                        <p class="p-text">食品包裝設計的重點客戶希望能有創新的包裝視覺，能在貨架上「瞬間贏得選擇」。
+                            食慾喚起： 透過專業攝影或誘人色彩，讓產品看起來「絕對美味」。
+                            資訊清晰： 建立「品牌-品名-風味」的清晰視覺層次，讓消費者秒懂。
+                            品牌定位： 透過視覺風格精準傳達價值（如：精品、有機、手工）。</p>
                     </div>
-
-                    <div class="p-context-box">
+                    <!-- <div class="p-context-box">
                         <div class="p-subtitle">CONCEPT</div>
                         <p class="p-text">食感喚起：透過專業攝影展現美味。資訊清晰：建立「品牌-品名-風味」的層次。精準傳達有機、天然的品牌價值。</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="p-visuals">
@@ -449,7 +431,43 @@
                     </div>
                     <div>
                         <img src="images/project6-2.jpg" alt="Candy Box">
-                        <div class="fig-caption"><span>FIG. 06.3</span><span>產品包裝設計(不含商業攝影)</span></div>
+                        <div class="fig-caption"><span>FIG. 06.3</span><span>產品包裝設計</span></div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-block">
+            <div class="p-sidebar">
+                <div class="sticky-info">
+                    <div class="p-header">
+                        <span class="p-no">07</span>
+                        <span class="p-type">BOOKCOVER</span>
+                    </div>
+                    <h2 class="p-title">書籍封面設計</h2>
+                    <div class="p-context-box">
+                        <div class="p-subtitle">CONTEXT</div>
+                        <p class="p-text">企業年報與 ESG 報告書不僅是合規文件，更是企業向利害關係人展現營運透明度與未來願景的關鍵媒介。挑戰在於如何展現出企業的特色與願景，並易於閱讀且符合品牌識別的視覺。</p>
+                    </div>
+                    <!-- <div class="p-context-box">
+                        <div class="p-subtitle">CONCEPT</div>
+                        <p class="p-text">食感喚起：透過專業攝影展現美味。資訊清晰：建立「品牌-品名-風味」的層次。精準傳達有機、天然的品牌價值。</p>
+                    </div> -->
+                </div>
+            </div>
+            <div class="p-visuals">
+                <div class="visual-hero">
+                    <img src="images/project7-main.png" alt="Packaging Group">
+                    <div class="fig-caption"><span>FIG. 07.1</span><span>企業財報封面設計</span></div>
+                </div>
+                <div class="visual-grid">
+                    <div>
+                        <img src="images/project7-1.jpg" alt="Peanut Packaging">
+                        <div class="fig-caption"><span>FIG. 07.2</span><span>企業財報封面設計</span></div>
+                    </div>
+                    <div>
+                        <img src="images/project7-2.jpg" alt="Candy Box">
+                        <div class="fig-caption"><span>FIG. 07.3</span><span>企業財報封面設計</span></div>
                     </div>
                 </div>
             </div>
@@ -459,7 +477,7 @@
 
     <footer>
         <div class="contact-box">
-            <h2>Let's Work Together.</h2>
+            <h2>Start a Conversation.</h2>
             <a href="mailto:dadoo0130@gmail.com" class="contact-email">dadoo0130@gmail.com</a>
         </div>
         <div class="copyright">
