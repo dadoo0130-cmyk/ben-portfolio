@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BEN | VISUAL DESIGN ARCHIVE</title>
+    <meta name="description" content="BEN 平面視覺設計師作品集：大型論壇主視覺、網站視覺、數位廣告 Banner / EDM、包裝與出版設計。">
+
+    <!-- 分享到 LINE / FB / Messenger 時的預覽卡片 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BEN | VISUAL DESIGN ARCHIVE">
+    <meta property="og:description" content="平面視覺設計作品集：論壇主視覺、網站視覺、數位廣告、包裝與出版設計。">
+    <meta property="og:image" content="https://dadoo0130-cmyk.github.io/ben-portfolio/images/og.jpg">
+    <meta property="og:url" content="https://dadoo0130-cmyk.github.io/ben-portfolio/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231A1A1A'/%3E%3Ctext x='16' y='23' font-family='serif' font-size='20' fill='%23fff' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* --- 1. 核心變數  --- */
+        /* --- 1. 核心變數 --- */
         :root {
-            --bg-color: #F5F5F7;       /* 蘋果灰/冷調紙張色 */
-            --text-color: #1A1A1A;     /* 近黑 */
-            --accent-color: #0044CC;   /* 專業藍 */
-            --line-color: #D1D1D1;     /* 檔案分隔線 */
+            --bg-color: #F5F5F7;
+            --text-color: #1A1A1A;
+            --accent-color: #0044CC;
+            --line-color: #D1D1D1;
             --font-serif: 'Noto Serif TC', serif;
             --font-sans: 'Noto Sans TC', sans-serif;
             --font-mono: 'Courier New', Courier, monospace;
@@ -36,66 +47,45 @@
             position: relative;
         }
 
-        /* 圖片設定：預設全站圖片黑白，懸停時變彩色 */
-        img { width: 100%; height: auto; display: block; transition: all 0.6s ease; filter: grayscale(100%) contrast(1.05); }
-        .project-block:hover img { filter: grayscale(0%) contrast(1); }
-        
-        /* --- [新增] 強制讓個人頭像保持彩色 --- */
-        .profile-section img {
-            filter: grayscale(0%) contrast(1) !important;
+        img { width: 100%; height: auto; display: block; transition: filter 0.6s ease; }
+
+        /* 黑白→彩色 只在有滑鼠的裝置生效；手機平板直接顯示彩色 */
+        @media (hover: hover) and (pointer: fine) {
+            .project-block img { filter: grayscale(100%) contrast(1.05); }
+            .project-block:hover img { filter: none; }
         }
-        
+
         a { text-decoration: none; color: inherit; transition: 0.3s; }
-        
+
         /* --- 2. 導航與裝飾 --- */
-        nav { 
-            position: sticky; top: 0; z-index: 100; 
-            background: rgba(245,245,247, 0.95); 
-            backdrop-filter: blur(10px); 
-            border-bottom: 1px solid var(--line-color); 
-            padding: 1.2rem 2rem; 
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(245,245,247, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line-color);
+            padding: 1.2rem 2rem;
             display: flex; justify-content: space-between; align-items: center;
-            font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 1px; 
+            font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 1px;
         }
         nav a:hover { color: var(--accent-color); }
 
-        /* 四角裁切線 */
         .crop-mark { position: fixed; width: 15px; height: 15px; border: 1px solid #000; z-index: 999; pointer-events: none; }
         .tl { top: 0; left: 0; border-right: none; border-bottom: none; }
         .tr { top: 0; right: 0; border-left: none; border-bottom: none; }
         .bl { bottom: 0; left: 0; border-right: none; border-top: none; }
         .br { bottom: 0; right: 0; border-left: none; border-top: none; }
 
-        /* --- 3. Hero 主視覺 --- */
-        .hero { 
-            min-height: 85vh; display: flex; flex-direction: column; justify-content: center; 
-            padding: 0 5%; border-bottom: 1px solid var(--line-color); 
-        }
-        .hero h1 { 
-            font-family: var(--font-serif);
-            font-size: clamp(3.5rem, 10vw, 8rem); 
-            line-height: 1.1; 
-            font-weight: 300; 
-            margin-bottom: 2rem; 
-            letter-spacing: -2px; 
-        }
-        .hero-meta { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;
-            font-family: var(--font-mono); font-size: 0.8rem; color: #555; 
-            border-top: 1px solid var(--line-color); padding-top: 2rem;
-            max-width: 800px;
-        }
-
         /* 跑馬燈 */
-        .marquee-bar { 
-            background: var(--text-color); color: #fff; overflow: hidden; 
-            white-space: nowrap; padding: 0.6rem 0; 
-            font-family: var(--font-mono); font-size: 0.8rem; 
+        .marquee-bar {
+            background: var(--text-color); color: #fff; overflow: hidden;
+            white-space: nowrap; padding: 0.6rem 0;
+            font-family: var(--font-mono); font-size: 0.8rem;
         }
         .marquee-content { display: inline-block; animation: scroll 40s linear infinite; }
         @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @media (prefers-reduced-motion: reduce) { .marquee-content { animation: none; } }
 
-        /* --- 4. 關於我 (Profile) --- */
+        /* --- 3. 關於我 --- */
         .profile-section {
             padding: 6rem 5%;
             border-bottom: 1px solid var(--line-color);
@@ -105,82 +95,87 @@
             gap: 4rem;
         }
         .profile-title { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1rem; }
+        .avatar { width: 120px; height: 120px; background: #ddd; border-radius: 50%; overflow: hidden; margin-bottom: 1rem; }
         .profile-desc { font-size: 1rem; color: #444; max-width: 600px; text-align: justify; }
         .service-list { margin-top: 2rem; font-family: var(--font-mono); font-size: 0.8rem; color: #666; }
         .service-list li { margin-bottom: 0.5rem; list-style: none; }
         .service-list li::before { content: "→ "; color: var(--accent-color); }
 
-        /* --- 5. 作品展示區 --- */
+        /* --- 4. 作品展示區 --- */
         .project-block {
             display: grid;
             grid-template-columns: 320px 1fr;
             border-bottom: 1px solid var(--line-color);
             min-height: 90vh;
             background: #fff;
+            scroll-margin-top: 60px;
         }
         .project-block:nth-child(even) { background: var(--bg-color); }
 
-        .p-sidebar { 
-            padding: 3rem 2rem; 
-            border-right: 1px solid var(--line-color); 
-            position: relative; 
-        }
+        .p-sidebar { padding: 3rem 2rem; border-right: 1px solid var(--line-color); position: relative; }
         .sticky-info { position: sticky; top: 100px; }
-        
-        .p-header { 
-            border-bottom: 1px solid var(--line-color); 
+
+        .p-header {
+            border-bottom: 1px solid var(--line-color);
             padding-bottom: 1rem; margin-bottom: 2rem;
-            display: flex; justify-content: space-between; align-items: baseline;
+            display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
         }
         .p-no { font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; color: var(--accent-color); }
         .p-type { font-family: var(--font-mono); font-size: 0.7rem; background: #000; color: #fff; padding: 2px 6px; }
 
         .p-title { font-family: var(--font-serif); font-size: 1.8rem; line-height: 1.3; margin-bottom: 1.5rem; font-weight: 600; }
-        
+
         .p-context-box { margin-bottom: 2rem; }
         .p-subtitle { font-family: var(--font-mono); font-size: 0.75rem; color: #888; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
-        .p-text { font-size: 0.95rem; color: #444; text-align: justify; margin-bottom: 1.5rem; }
+        .p-text { font-size: 0.95rem; color: #444; text-align: justify; margin-bottom: 1.5rem; white-space: pre-line; }
 
-        .p-visuals {
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
+        .p-visuals { padding: 3rem; display: flex; flex-direction: column; gap: 3rem; min-width: 0; }
+        .visual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
-        .visual-hero img { box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .fig { margin: 0; }
+        .zoom { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+        .zoom:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 4px; }
+        .p-visuals > .fig img { box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .fig-caption {
             margin-top: 0.5rem;
             font-family: var(--font-mono); font-size: 0.7rem; color: #888;
-            display: flex; justify-content: space-between;
+            display: flex; justify-content: space-between; gap: 1rem;
             border-top: 1px solid #ddd; padding-top: 5px;
         }
 
-        .visual-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+        /* 燈箱 */
+        #lightbox {
+            max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh;
+            border: 0; padding: 2rem; background: transparent;
+            display: none; align-items: center; justify-content: center; cursor: zoom-out;
         }
+        #lightbox[open] { display: flex; }
+        #lightbox::backdrop { background: rgba(10,10,10,0.92); }
+        #lightbox img { width: auto; max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        /* --- 6. 頁尾 --- */
-        footer { 
-            padding: 5rem 5%; 
+        /* --- 5. 頁尾 --- */
+        footer {
+            padding: 5rem 5%;
             background: #111; color: #fff;
             display: flex; justify-content: space-between; align-items: flex-end;
         }
         .contact-box h2 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 1rem; }
-        .contact-email { font-size: 1.5rem; border-bottom: 1px solid #555; padding-bottom: 5px; }
+        .contact-email { font-size: 1.5rem; border-bottom: 1px solid #555; padding-bottom: 5px; word-break: break-all; }
         .contact-email:hover { color: var(--accent-color); border-bottom-color: var(--accent-color); }
-        .copyright { font-family: var(--font-mono); font-size: 0.7rem; color: #666; }
+        .copyright { font-family: var(--font-mono); font-size: 0.7rem; color: #888; }
 
         @media (max-width: 900px) {
             body { border: none; }
-            .hero h1 { font-size: 3.5rem; }
-            .profile-section { grid-template-columns: 1fr; gap: 2rem; }
-            .project-block { grid-template-columns: 1fr; }
-            .p-sidebar { border-right: none; border-bottom: 1px solid var(--line-color); padding: 2rem; }
+            nav { padding: 1rem 1.25rem; gap: 1rem; font-size: 0.7rem; letter-spacing: 0; }
+            .profile-section { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.25rem; }
+            .project-block { grid-template-columns: 1fr; min-height: 0; }
+            .p-sidebar { border-right: none; border-bottom: 1px solid var(--line-color); padding: 2rem 1.25rem; }
             .sticky-info { position: static; }
-            .p-visuals { padding: 1.5rem; }
-            .visual-grid { grid-template-columns: 1fr; }
-            footer { flex-direction: column; gap: 3rem; align-items: flex-start; }
+            .p-visuals { padding: 1.5rem 1.25rem; gap: 2rem; }
+            .visual-grid { grid-template-columns: 1fr; gap: 2rem; }
+            footer { flex-direction: column; gap: 3rem; align-items: flex-start; padding: 4rem 1.25rem; }
+            .contact-email { font-size: 1.15rem; }
+            #lightbox { padding: 0.5rem; }
         }
     </style>
 </head>
@@ -194,22 +189,20 @@
     <nav>
         <div>BEN / GRAPHIC DESIGN</div>
         <div>
-            <a href="#projects">PROJECTS</a> / 
+            <a href="#projects">PROJECTS</a> /
             <a href="mailto:dadoo0130@gmail.com">CONTACT</a>
         </div>
     </nav>
 
-    <div class="marquee-bar">
-        <div class="marquee-content">
-            /// 2023 JAKOTA /// 2023 SUSTAINABLE INVESTMENT /// BUSINESS WEEKLY ACADEMY /// HAPPY GO /// LEEZEN PACKAGING /// 2023 JAKOTA /// 2023 SUSTAINABLE INVESTMENT /// BUSINESS WEEKLY ACADEMY /// HAPPY GO /// LEEZEN PACKAGING /// 
-        </div>
+    <div class="marquee-bar" aria-hidden="true">
+        <div class="marquee-content"></div>
     </div>
 
     <section class="profile-section">
         <div>
             <h2 class="profile-title">About BEN</h2>
-            <div style="width: 120px; height: 120px; background: #ddd; border-radius: 50%; overflow: hidden; margin-bottom: 1rem;">
-                <img src="images/ben.png" alt="Ben Portrait">
+            <div class="avatar">
+                <img src="images/ben.webp" alt="Ben 個人照" width="120" height="120">
             </div>
         </div>
         <div>
@@ -218,7 +211,7 @@
                 <br>擅長處理大型論壇主視覺、數位行銷素材以及品牌包裝設計。
             </p>
             <ul class="service-list">
-                <li>品牌活動視覺 (KV poster / Display Design) </li>
+                <li>品牌活動視覺 (KV poster / Display Design)</li>
                 <li>網站視覺 (Website)</li>
                 <li>數位廣告 (BANNER / EDM)</li>
                 <li>出版設計 (BookCover / Packaging Design)</li>
@@ -226,254 +219,10 @@
         </div>
     </section>
 
-    <div id="projects">
-
-        <article class="project-block">
-            <div class="p-sidebar">
-                <div class="sticky-info">
-                    <div class="p-header">
-                        <span class="p-no">01</span>
-                        <span class="p-type">EVENT VISUAL</span>
-                    </div>
-                    <h2 class="p-title">SIIR-LEVEL UP<br>創新大進擊</h2>
-                    
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONTEXT</div>
-                        <p class="p-text">經濟部商業司「服務業創新研發計畫」年度成果發表會。核心挑戰在於將「創新研發」與「數位轉型」等抽象概念具象化。</p>
-                    </div>
-
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONCEPT</div>
-                        <p class="p-text">以「思維驅動進化」為核心。使用人腦剪影填充雲端與圖表符號，搭配衝出雲端的火箭，呼應「LEVEL UP」與「大進擊」的上升動能。配色選用萊姆綠傳達活力。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="p-visuals">
-                <div class="visual-hero">
-                    <img src="images/project1-main.png" alt="SIIR Main Visual">
-                    <div class="fig-caption"><span>FIG. 01.1</span><span>論壇主視覺</span></div>
-                </div>
-                <div class="visual-grid">
-                    <div>
-                        <img src="images/project1-1.jpg" alt="Stage Design">
-                        <div class="fig-caption"><span>FIG. 01.2</span><span>現場陳列製作物</span></div>
-                    </div>
-                    <div>
-                        <img src="images/project1-2.jpg" alt="Event Display">
-                        <div class="fig-caption"><span>FIG. 01.3</span><span>現場陳列製作物</span></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="project-block">
-            <div class="p-sidebar">
-                <div class="sticky-info">
-                    <div class="p-header">
-                        <span class="p-no">02</span>
-                        <span class="p-type">EVENT VISUAL</span>
-                    </div>
-                    <h2 class="p-title">2023 JAKOTA<br>經濟趨勢論壇</h2>
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONTEXT</div>
-                        <p class="p-text">探討日韓台(JAKOTA)在全球變局下的供應鏈合作。目標打造具備「國際感」、「科技感」的視覺形象，吸引高階經理人。</p>
-                    </div>
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONCEPT</div>
-                        <p class="p-text">概念：「數據匯流，驅動東亞經濟共同體」。以深藍色數位地球為基底，金色光束匯聚於東亞板塊，象徵資本與技術的流動。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="p-visuals">
-                <div class="visual-hero">
-                    <img src="images/project2-main.png" alt="JAKOTA KV">
-                    <div class="fig-caption"><span>FIG. 02.1</span><span>論壇主視覺</span></div>
-                </div>
-                <div class="visual-grid">
-                    <div>
-                        <img src="images/project2-1.jpg" alt="Venue Display">
-                        <div class="fig-caption"><span>FIG. 02.2</span><span>活動雜誌</span></div>
-                    </div>
-                    <div>
-                        <img src="images/project2-2.jpg" alt="Agenda Design">
-                        <div class="fig-caption"><span>FIG. 02.3</span><span>現場陳列製作物</span></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="project-block">
-            <div class="p-sidebar">
-                <div class="sticky-info">
-                    <div class="p-header">
-                        <span class="p-no">03</span>
-                        <span class="p-type">EVENT VISUAL</span>
-                    </div>
-                    <h2 class="p-title">2023 永續投資高峰會</h2>
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONTEXT</div>
-                        <p class="p-text">商業周刊年度財經論壇，探討「綠色金融3.0」與ESG浪潮。需傳達「永續、金融、加速」三大核心。</p>
-                    </div>
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONCEPT</div>
-                        <p class="p-text">視覺核心結合「燈泡(創新)」、「綠芽」與「循環符號」。以漸層綠象徵生命力，科技藍代表金融專業。透過動態光束具象化「加速器」的動能。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="p-visuals">
-                <div class="visual-hero">
-                    <img src="images/project3-main.png" alt="ESG Summit KV">
-                    <div class="fig-caption"><span>FIG. 03.1</span><span>論壇主視覺</span></div>
-                </div>
-                <div class="visual-hero">
-                    <img src="images/project3-1.jpg" alt="On-site Display">
-                    <div class="fig-caption"><span>FIG. 03.2</span><span>現場陳列製作物</span></div>
-                </div>
-            </div>
-        </article>
-
-        <article class="project-block">
-            <div class="p-sidebar">
-                <div class="sticky-info">
-                    <div class="p-header">
-                        <span class="p-no">04</span>
-                        <span class="p-type">WEB DESIGN</span>
-                    </div>
-                    <h2 class="p-title">商周學院<br>網頁視覺改版</h2>
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONTEXT</div>
-                        <p class="p-text">針對全台最有影響力的CEO共學平台進行官網改版。目標客群為金字塔頂端管理者，需打造RWD響應式且具權威感的頂級瀏覽體驗。</p>
-                    </div>
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONCEPT</div>
-                        <p class="p-text">以「尊爵黑」搭配「金屬髮絲紋」奠定權威感。運用品牌紅色的銳利箭頭造型，象徵「強者」前進的動能。高對比文字呼應「與強者為伍，與智者同行」的精神。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="p-visuals">
-                <div class="visual-hero">
-                    <img src="images/project4-main.png" alt="Web Desktop Mockup">
-                    <div class="fig-caption"><span>FIG. 04.1</span><span>網站主視覺</span></div>
-                </div>
-                <div class="visual-hero">
-                    <img src="images/project4-1.jpg" alt="Web Desktop Mockup">
-                    <div class="fig-caption"><span>FIG. 04.2</span><span>網站內頁</span></div>
-                </div>
-            </div>
-        </article>
-
-        <article class="project-block">
-            <div class="p-sidebar">
-                <div class="sticky-info">
-                    <div class="p-header">
-                        <span class="p-no">05</span>
-                        <span class="p-type">DIGITAL MARKETING</span>
-                    </div>
-                    <h2 class="p-title">HAPPY GO<br>數位視覺設計</h2>
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONTEXT</div>
-                        <p class="p-text">全台最大點數平台。挑戰在於在EDM、社群廣告、APP推播中，設計出能瞬間「喚醒」會員並驅動點擊的素材。</p>
-                    </div>
-                    <div class="p-context-box">
-                        <div class="p-subtitle">STRATEGY</div>
-                        <p class="p-text">設計調性講求「瞬間抓住目光」。針對「點數經濟」核心（如限時搶券、點數大富翁），使用高彩度配色與清晰重點文字，提升點擊率。</p>
-                    </div>
-                </div>
-            </div>
-            <div class="p-visuals">
-                <div class="visual-hero">
-                    <img src="images/project5-main.png" alt="Banner Collection">
-                    <div class="fig-caption"><span>FIG. 05.1</span><span>APP推播與活動Banner合輯</span></div>
-                </div>
-                <div class="visual-grid">
-                    <div>
-                        <img src="images/project5-1.jpg" alt="EDM Design">
-                        <div class="fig-caption"><span>FIG. 05.2</span><span>活動Banner</span></div>
-                    </div>
-                    <div>
-                        <img src="images/project5-2.jpg" alt="Game UI">
-                        <div class="fig-caption"><span>FIG. 05.3</span><span>活動Banner</span></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="project-block">
-            <div class="p-sidebar">
-                <div class="sticky-info">
-                    <div class="p-header">
-                        <span class="p-no">06</span>
-                        <span class="p-type">PACKAGING</span>
-                    </div>
-                    <h2 class="p-title">食品包裝設計</h2>
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONTEXT</div>
-                        <p class="p-text">食品包裝設計的重點客戶希望能有創新的包裝視覺，能在貨架上「瞬間贏得選擇」。
-                            食慾喚起： 透過專業攝影或誘人色彩，讓產品看起來「絕對美味」。
-                            資訊清晰： 建立「品牌-品名-風味」的清晰視覺層次，讓消費者秒懂。
-                            品牌定位： 透過視覺風格精準傳達價值（如：精品、有機、手工）。</p>
-                    </div>
-                    <!-- <div class="p-context-box">
-                        <div class="p-subtitle">CONCEPT</div>
-                        <p class="p-text">食感喚起：透過專業攝影展現美味。資訊清晰：建立「品牌-品名-風味」的層次。精準傳達有機、天然的品牌價值。</p>
-                    </div> -->
-                </div>
-            </div>
-            <div class="p-visuals">
-                <div class="visual-hero">
-                    <img src="images/project6-main.png" alt="Packaging Group">
-                    <div class="fig-caption"><span>FIG. 06.1</span><span>產品包裝設計</span></div>
-                </div>
-                <div class="visual-grid">
-                    <div>
-                        <img src="images/project6-1.jpg" alt="Peanut Packaging">
-                        <div class="fig-caption"><span>FIG. 06.2</span><span>產品包裝設計(不含商業攝影)</span></div>
-                    </div>
-                    <div>
-                        <img src="images/project6-2.jpg" alt="Candy Box">
-                        <div class="fig-caption"><span>FIG. 06.3</span><span>產品包裝設計</span></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="project-block">
-            <div class="p-sidebar">
-                <div class="sticky-info">
-                    <div class="p-header">
-                        <span class="p-no">07</span>
-                        <span class="p-type">BOOKCOVER</span>
-                    </div>
-                    <h2 class="p-title">書籍封面設計</h2>
-                    <div class="p-context-box">
-                        <div class="p-subtitle">CONTEXT</div>
-                        <p class="p-text">企業年報與 ESG 報告書不僅是合規文件，更是企業向利害關係人展現營運透明度與未來願景的關鍵媒介。挑戰在於如何展現出企業的特色與願景，並易於閱讀且符合品牌識別的視覺。</p>
-                    </div>
-                    <!-- <div class="p-context-box">
-                        <div class="p-subtitle">CONCEPT</div>
-                        <p class="p-text">食感喚起：透過專業攝影展現美味。資訊清晰：建立「品牌-品名-風味」的層次。精準傳達有機、天然的品牌價值。</p>
-                    </div> -->
-                </div>
-            </div>
-            <div class="p-visuals">
-                <div class="visual-hero">
-                    <img src="images/project7-main.png" alt="Packaging Group">
-                    <div class="fig-caption"><span>FIG. 07.1</span><span>企業財報封面設計</span></div>
-                </div>
-                <div class="visual-grid">
-                    <div>
-                        <img src="images/project7-1.jpg" alt="Peanut Packaging">
-                        <div class="fig-caption"><span>FIG. 07.2</span><span>企業財報封面設計</span></div>
-                    </div>
-                    <div>
-                        <img src="images/project7-2.jpg" alt="Candy Box">
-                        <div class="fig-caption"><span>FIG. 07.3</span><span>企業財報封面設計</span></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-    </div>
+    <!-- 作品會由 projects.js 自動產生在這裡 -->
+    <main id="projects">
+        <noscript><p style="padding:3rem 5%">請開啟瀏覽器的 JavaScript 以瀏覽作品。</p></noscript>
+    </main>
 
     <footer>
         <div class="contact-box">
@@ -481,9 +230,13 @@
             <a href="mailto:dadoo0130@gmail.com" class="contact-email">dadoo0130@gmail.com</a>
         </div>
         <div class="copyright">
-            © 2025 BEN VISUAL DESIGN. ALL RIGHTS RESERVED.
+            © <span id="year">2026</span> BEN VISUAL DESIGN. ALL RIGHTS RESERVED.
         </div>
     </footer>
 
+    <dialog id="lightbox" aria-label="圖片放大檢視"><img src="" alt=""></dialog>
+
+    <script src="projects.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
